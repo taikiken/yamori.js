@@ -1,0 +1,11 @@
+{
+  "name": "yamori.js",
+  "description": "jQuery.yamori. stick window top and move to hash element",
+  "url": "https://github.com/taikiken/yamori.js",
+  "options": {
+    "linkNatives": "true",
+    "attributesEmit": "true",
+    "outdir": "../docs",
+    "paths": ["../src"]
+  }
+}
