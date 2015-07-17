@@ -21,7 +21,7 @@
  *
  * This notice shall be included in all copies or substantial portions of the Software.
  *
- * @build 2015-07-17 17:58:20
+ * @build 2015-07-17 21:03:28
  * @version 0.1.1
  * @github https://github.com/taikiken/yamori.js
  */
@@ -494,6 +494,17 @@
 
   // --------------------------------------------------------------------------------
   // stick
+  var
+    cssText = "position: fixed; left: 0; top: 0; width: 100%;",
+    bodyStyle = "",
+    canRepeat = true,
+    repeatTimer = 0;
+
+  function stickFree () {
+
+    document.body.style.cssText = bodyStyle;
+
+  }
   /**
    * scroll 位置を y:0 にします
    * @for Yamori
@@ -503,18 +514,25 @@
    */
   function stick () {
 
+    bodyStyle = document.body.style.cssText;
+    document.body.style.cssText += "position: fixed; left: 0; top: 0; width: 100%;";
+
     setTimeout( function () {
 
-      window.scrollTo( 0, 0 );
-      document.body.scrollTop = 0;
+      if ( !!document.body ) {
+
+        document.body.scrollTop = 0;
+
+      }
+
       document.documentElement.scrollTop = 0;
+      window.scrollTo( 0, 0 );
+
 
     }, 0 );
 
+
   }
-
-  //Yamori.stick = stick;
-
 
   // --------------------------------------------------------------------------------
   // hashToStick
@@ -573,7 +591,7 @@
         option,
         trans;
 
-      stickWhenFoundHash();
+      //stickWhenFoundHash();
 
       if ( !!params ) {
 
@@ -595,6 +613,7 @@
         // 時間をおいて移動する
         setTimeout( function () {
 
+          option.load = true;
           trans.trans( option );
 
         }, 1000 * 0.5  );
@@ -665,6 +684,12 @@
         $target = $( target ),
         y;
 
+      if ( option.load ) {
+
+        stickFree();
+
+      }
+
       if ( $target.length === 0 ) {
 
         y = 0;
@@ -695,6 +720,8 @@
               html = this.nodeName.toLowerCase() === "html",
               start;
 
+            //console.log( "** start ** document.documentElement.scrollTop ", document.documentElement.scrollTop );
+
             if ( html ) {
 
               start = option.start;
@@ -709,6 +736,12 @@
 
           },
           complete: function () {
+
+            //if ( option.load ) {
+            //
+            //  location.hash = target;
+            //
+            //}
 
             var
               html = this.nodeName.toLowerCase() === "html",
@@ -735,6 +768,7 @@
 
     Yamori.activate = function ( params ) {
 
+      //initialize();
       ready();
       load( params );
 

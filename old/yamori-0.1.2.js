@@ -21,8 +21,8 @@
  *
  * This notice shall be included in all copies or substantial portions of the Software.
  *
- * @build 2015-07-17 18:04:42
- * @version 0.1.1
+ * @build 2015-07-17 21:33:52
+ * @version 0.1.2
  * @github https://github.com/taikiken/yamori.js
  */
 /* jslint -W089 */
@@ -494,27 +494,63 @@
 
   // --------------------------------------------------------------------------------
   // stick
+  var
+    bodyStyle = "";
+
+  //function topZero () {
+  //
+  //  $( "html, body" ).stop().animate( {
+  //    scrollTop: 0
+  //  },
+  //    0,
+  //  function () {
+  //    alert( "comp**" );
+  //  });
+  //
+  //}
+  //
+  //topZero();
+
+  function stickFree () {
+
+    document.body.style.cssText = bodyStyle;
+
+  }
   /**
    * scroll 位置を y:0 にします
    * @for Yamori
    * @static
    * @method stick
+   * @param {boolean=false} [style]
    * @private
    */
-  function stick () {
+  function stick ( style ) {
+
+    style = !!style;
+
+    if ( style) {
+
+      bodyStyle = document.body.style.cssText;
+      document.body.style.cssText += "position: fixed; left: 0; top: 0; width: 100%;";
+
+    }
 
     setTimeout( function () {
 
-      window.scrollTo( 0, 0 );
-      document.body.scrollTop = 0;
+      if ( !!document.body ) {
+
+        document.body.scrollTop = 0;
+
+      }
+
       document.documentElement.scrollTop = 0;
+      window.scrollTo( 0, 0 );
+
 
     }, 0 );
 
+    //topZero();
   }
-
-  //Yamori.stick = stick;
-
 
   // --------------------------------------------------------------------------------
   // hashToStick
@@ -523,14 +559,15 @@
    * hash があるときは scrollTo(0,0) を実行する
    * @for Yamori
    * @method stickWhenFoundHash
+   * @param {boolean=false} [style]
    * @static
    * @private
    */
-  function stickWhenFoundHash () {
+  function stickWhenFoundHash ( style ) {
 
     if ( !!hash ) {
 
-      stick();
+      stick( style );
 
     }
 
@@ -550,7 +587,7 @@
     // bind document ready
     $( document ).ready( function () {
 
-      stickWhenFoundHash();
+      stickWhenFoundHash( true );
 
     } );
 
@@ -595,6 +632,7 @@
         // 時間をおいて移動する
         setTimeout( function () {
 
+          option.load = true;
           trans.trans( option );
 
         }, 1000 * 0.5  );
@@ -665,6 +703,12 @@
         $target = $( target ),
         y;
 
+      if ( option.load ) {
+
+        stickFree();
+
+      }
+
       if ( $target.length === 0 ) {
 
         y = 0;
@@ -695,6 +739,8 @@
               html = this.nodeName.toLowerCase() === "html",
               start;
 
+            //console.log( "** start ** document.documentElement.scrollTop ", document.documentElement.scrollTop );
+
             if ( html ) {
 
               start = option.start;
@@ -709,6 +755,12 @@
 
           },
           complete: function () {
+
+            //if ( option.load ) {
+            //
+            //  location.hash = target;
+            //
+            //}
 
             var
               html = this.nodeName.toLowerCase() === "html",
@@ -735,6 +787,7 @@
 
     Yamori.activate = function ( params ) {
 
+      //initialize();
       ready();
       load( params );
 

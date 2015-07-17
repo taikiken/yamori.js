@@ -36,7 +36,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/yamori.js",
-            "line": 604,
+            "line": 654,
             "description": "yamori.js",
             "requires": [
                 "jQuery"
@@ -55,7 +55,7 @@
             "module": "Yamori",
             "namespace": "",
             "file": "src/yamori.js",
-            "line": 57,
+            "line": 68,
             "description": "data 属性をパースして key: value 形式にします\n<br><b>*inner class</b>",
             "static": 1,
             "is_constructor": 1
@@ -71,8 +71,8 @@
             "module": "Yamori",
             "namespace": "",
             "file": "src/yamori.js",
-            "line": 208,
-            "description": "jQuery easing を拡張します\n  <b>inner class</b>\n  <p>呼び出しはできません、読み込まれると同時に拡張します。</p>\n  <h2>種類</h2>\n  <ul>\n    <li>quart</li>\n    <li>easeInQuad</li>\n    <li>easeOutQuad</li>\n    <li>easeInOutQuad</li>\n    <li>easeInCubic</li>\n    <li>easeOutCubic</li>\n    <li>easeInOutCubic</li>\n    <li>easeInQuart</li>\n    <li>easeOutQuart</li>\n    <li>easeInOutQuart</li>\n    <li>easeInQuint</li>\n    <li>easeOutQuint</li>\n    <li>easeInOutQuint</li>\n    <li>easeInSine</li>\n    <li>easeOutSine</li>\n    <li>easeInOutSine</li>\n    <li>easeInExpo</li>\n    <li>easeOutExpo</li>\n    <li>easeInOutExpo</li>\n    <li>easeInCirc</li>\n    <li>easeOutCirc</li>\n    <li>easeInOutCirc</li>\n    <li>easeInElastic</li>\n    <li>easeOutElastic</li>\n    <li>easeInOutElastic</li>\n    <li>easeInBack</li>\n    <li>easeOutBack</li>\n    <li>easeInOutBack</li>\n    <li>easeInBounce</li>\n    <li>easeOutBounce</li>\n    <li>easeInOutBounce</li>\n  </ul>",
+            "line": 219,
+            "description": "jQuery easing を拡張します\n  <p>jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/</P>\n  <b>inner class</b>\n  <p>呼び出しはできません、読み込まれると同時に拡張します。</p>\n  <h2>種類</h2>\n  <ul>\n    <li>quart</li>\n    <li>easeInQuad</li>\n    <li>easeOutQuad</li>\n    <li>easeInOutQuad</li>\n    <li>easeInCubic</li>\n    <li>easeOutCubic</li>\n    <li>easeInOutCubic</li>\n    <li>easeInQuart</li>\n    <li>easeOutQuart</li>\n    <li>easeInOutQuart</li>\n    <li>easeInQuint</li>\n    <li>easeOutQuint</li>\n    <li>easeInOutQuint</li>\n    <li>easeInSine</li>\n    <li>easeOutSine</li>\n    <li>easeInOutSine</li>\n    <li>easeInExpo</li>\n    <li>easeOutExpo</li>\n    <li>easeInOutExpo</li>\n    <li>easeInCirc</li>\n    <li>easeOutCirc</li>\n    <li>easeInOutCirc</li>\n    <li>easeInElastic</li>\n    <li>easeOutElastic</li>\n    <li>easeInOutElastic</li>\n    <li>easeInBack</li>\n    <li>easeOutBack</li>\n    <li>easeInOutBack</li>\n    <li>easeInBounce</li>\n    <li>easeOutBounce</li>\n    <li>easeInOutBounce</li>\n  </ul>",
             "static": 1,
             "is_constructor": 1
         },
@@ -87,14 +87,14 @@
             "module": "Yamori",
             "namespace": "",
             "file": "src/yamori.js",
-            "line": 604,
+            "line": 654,
             "is_constructor": 1
         }
     },
     "classitems": [
         {
             "file": "src/yamori.js",
-            "line": 71,
+            "line": 82,
             "description": "引数 element(HTMLElement) の data属性を object {key: value} にして返す",
             "itemtype": "method",
             "name": "scan",
@@ -114,7 +114,7 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 92,
+            "line": 103,
             "description": "modern Browser の dataset を key: value を調べます",
             "itemtype": "method",
             "name": "modern",
@@ -134,7 +134,7 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 137,
+            "line": 148,
             "itemtype": "method",
             "name": "legacy",
             "static": 1,
@@ -153,7 +153,7 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 169,
+            "line": 180,
             "itemtype": "method",
             "name": "camel",
             "static": 1,
@@ -173,7 +173,7 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 184,
+            "line": 195,
             "description": "camelcase 文字型を -（ハイフン）つなぎにして返します",
             "itemtype": "method",
             "name": "hyphen",
@@ -194,7 +194,7 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 258,
+            "line": 270,
             "itemtype": "method",
             "name": "activate",
             "static": 1,
@@ -210,11 +210,19 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 485,
+            "line": 519,
             "description": "scroll 位置を y:0 にします",
             "static": 1,
             "itemtype": "method",
             "name": "stick",
+            "params": [
+                {
+                    "name": "style",
+                    "description": "",
+                    "type": "Boolean=false",
+                    "optional": true
+                }
+            ],
             "access": "private",
             "tagname": "",
             "class": "Yamori",
@@ -222,10 +230,18 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 510,
+            "line": 558,
             "description": "hash があるときは scrollTo(0,0) を実行する",
             "itemtype": "method",
             "name": "stickWhenFoundHash",
+            "params": [
+                {
+                    "name": "style",
+                    "description": "",
+                    "type": "Boolean=false",
+                    "optional": true
+                }
+            ],
             "static": 1,
             "access": "private",
             "tagname": "",
@@ -234,7 +250,7 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 529,
+            "line": 578,
             "description": "$( document ).ready を実行する",
             "itemtype": "method",
             "name": "ready",
@@ -246,7 +262,7 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 549,
+            "line": 598,
             "itemtype": "method",
             "name": "load",
             "static": 1,
@@ -262,7 +278,7 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 614,
+            "line": 664,
             "description": "初期化処理",
             "itemtype": "method",
             "name": "init",
@@ -277,7 +293,7 @@
         },
         {
             "file": "src/yamori.js",
-            "line": 632,
+            "line": 682,
             "itemtype": "method",
             "name": "trans",
             "params": [

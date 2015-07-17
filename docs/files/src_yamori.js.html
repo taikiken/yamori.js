@@ -83,6 +83,17 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 /*!
+ * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
+ * TERMS OF USE - jQuery Easing
+ *
+ * Open source under the BSD License.
+ *
+ * Copyright © 2008 George McGinley Smith
+ * All rights reserved.
+ *
+ * modified by taikiken
+ */
+/*!
  * @license inazumatv.com
  * @author (at)taikiken / http://inazumatv.com
  * @date 15/07/16 - 16:03
@@ -291,6 +302,7 @@
 
     /**
      *  jQuery easing を拡張します
+     *    &lt;p&gt;jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/&lt;/P&gt;
      *    &lt;b&gt;inner class&lt;/b&gt;
      *    &lt;p&gt;呼び出しはできません、読み込まれると同時に拡張します。&lt;/p&gt;
      *    &lt;h2&gt;種類&lt;/h2&gt;
@@ -566,27 +578,63 @@
 
   // --------------------------------------------------------------------------------
   // stick
+  var
+    bodyStyle = &quot;&quot;;
+
+  //function topZero () {
+  //
+  //  $( &quot;html, body&quot; ).stop().animate( {
+  //    scrollTop: 0
+  //  },
+  //    0,
+  //  function () {
+  //    alert( &quot;comp**&quot; );
+  //  });
+  //
+  //}
+  //
+  //topZero();
+
+  function stickFree () {
+
+    document.body.style.cssText = bodyStyle;
+
+  }
   /**
    * scroll 位置を y:0 にします
    * @for Yamori
    * @static
    * @method stick
+   * @param {boolean=false} [style]
    * @private
    */
-  function stick () {
+  function stick ( style ) {
+
+    style = !!style;
+
+    if ( style) {
+
+      bodyStyle = document.body.style.cssText;
+      document.body.style.cssText += &quot;position: fixed; left: 0; top: 0; width: 100%;&quot;;
+
+    }
 
     setTimeout( function () {
 
-      window.scrollTo( 0, 0 );
-      document.body.scrollTop = 0;
+      if ( !!document.body ) {
+
+        document.body.scrollTop = 0;
+
+      }
+
       document.documentElement.scrollTop = 0;
+      window.scrollTo( 0, 0 );
+
 
     }, 0 );
 
+    //topZero();
   }
-
-  //Yamori.stick = stick;
-
 
   // --------------------------------------------------------------------------------
   // hashToStick
@@ -595,14 +643,15 @@
    * hash があるときは scrollTo(0,0) を実行する
    * @for Yamori
    * @method stickWhenFoundHash
+   * @param {boolean=false} [style]
    * @static
    * @private
    */
-  function stickWhenFoundHash () {
+  function stickWhenFoundHash ( style ) {
 
     if ( !!hash ) {
 
-      stick();
+      stick( style );
 
     }
 
@@ -622,7 +671,7 @@
     // bind document ready
     $( document ).ready( function () {
 
-      stickWhenFoundHash();
+      stickWhenFoundHash( true );
 
     } );
 
@@ -667,6 +716,7 @@
         // 時間をおいて移動する
         setTimeout( function () {
 
+          option.load = true;
           trans.trans( option );
 
         }, 1000 * 0.5  );
@@ -737,6 +787,12 @@
         $target = $( target ),
         y;
 
+      if ( option.load ) {
+
+        stickFree();
+
+      }
+
       if ( $target.length === 0 ) {
 
         y = 0;
@@ -767,6 +823,8 @@
               html = this.nodeName.toLowerCase() === &quot;html&quot;,
               start;
 
+            //console.log( &quot;** start ** document.documentElement.scrollTop &quot;, document.documentElement.scrollTop );
+
             if ( html ) {
 
               start = option.start;
@@ -781,6 +839,12 @@
 
           },
           complete: function () {
+
+            //if ( option.load ) {
+            //
+            //  location.hash = target;
+            //
+            //}
 
             var
               html = this.nodeName.toLowerCase() === &quot;html&quot;,
@@ -807,6 +871,7 @@
 
     Yamori.activate = function ( params ) {
 
+      //initialize();
       ready();
       load( params );
 
