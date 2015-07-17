@@ -38,6 +38,8 @@ jQuery Easing Plugin を使用しています。
 
 ### easing
 
+type {String}
+
 default: "quart"
 
 easing 関数一覧  
@@ -79,9 +81,13 @@ easing 関数一覧
 
 ### duration
 
+type {Number}
+
 default: 500
 
 ### start
+
+type {Function}
 
 default: null
 
@@ -96,6 +102,8 @@ default: null
 * jQuery 1.7 では動作しません、1.8以上で機能します。
 
 ### complete
+
+type {Function}
 
 default: null
 

@@ -2,7 +2,7 @@
 JavaScript, window.scrollTo by location.hash
 
 version: 0.1.1  
-build: 2015-07-17 17:58:20
+build: 2015-07-17 18:04:42
 
 ## hash付遷移時に window.onload 後にスムーズスクロール
 
@@ -37,6 +37,8 @@ jQuery Easing Plugin を使用しています。
 ## オプション
 
 ### easing
+
+type {String}
 
 default: "quart"
 
@@ -79,9 +81,13 @@ easing 関数一覧
 
 ### duration
 
+type {Number}
+
 default: 500
 
 ### start
+
+type {Function}
 
 default: null
 
@@ -96,6 +102,8 @@ default: null
 * jQuery 1.7 では動作しません、1.8以上で機能します。
 
 ### complete
+
+type {Function}
 
 default: null
 

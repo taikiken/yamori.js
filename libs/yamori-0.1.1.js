@@ -21,7 +21,7 @@
  *
  * This notice shall be included in all copies or substantial portions of the Software.
  *
- * @build 2015-07-17 17:58:20
+ * @build 2015-07-17 18:04:42
  * @version 0.1.1
  * @github https://github.com/taikiken/yamori.js
  */
