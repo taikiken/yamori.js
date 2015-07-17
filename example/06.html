@@ -12,9 +12,35 @@
     }
   </style>
   <script src="../_dependencies/jquery-1.11.1.min.js"></script>
-  <script id="yamori" src="../libs/yamori.js" data-easing="easeOutBack" data-duration="1000"></script>
+  <script src="../libs/yamori.js"></script>
+  <script>
+    ( function ( window ) {
+
+      "use strict";
+
+      var
+        document = window.document,
+        $ = window.jQuery;
+
+      // ready
+      $( document ).ready( function () {
+
+        $( ".smoothing" ).yamori( { duration: 1000 } );
+
+      } );
+
+    }( window ) );
+  </script>
 </head>
 <body>
+<div style="text-align: center;">
+  <a href="#element0" class="smoothing">element0</a>
+  <a href="#element1" class="smoothing">element1</a>
+  <a href="#element2" class="smoothing">element2</a>
+  <a href="#element3" class="smoothing">element3</a>
+  <a href="#element4" class="smoothing">element4</a>
+  <a href="#element5" class="smoothing">element5</a>
+</div>
 <div id="element0" class="element">
   <p>#element0</p>
 </div>

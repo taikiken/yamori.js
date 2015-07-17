@@ -2,12 +2,11 @@
     "project": {
         "name": "yamori.js",
         "description": "jQuery.yamori. stick window top and move to hash element",
-        "url": "https://github.com/taikiken/yamori.js",
-        "version": "0.1.0"
+        "url": "https://github.com/taikiken/yamori.js"
     },
     "files": {
-        "../src/yamori.js": {
-            "name": "../src/yamori.js",
+        "src/yamori.js": {
+            "name": "src/yamori.js",
             "modules": {
                 "Yamori": 1
             },
@@ -36,7 +35,7 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 604,
             "description": "yamori.js",
             "requires": [
@@ -55,7 +54,7 @@
             "extension_for": [],
             "module": "Yamori",
             "namespace": "",
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 57,
             "description": "data 属性をパースして key: value 形式にします\n<br><b>*inner class</b>",
             "static": 1,
@@ -71,7 +70,7 @@
             "extension_for": [],
             "module": "Yamori",
             "namespace": "",
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 208,
             "description": "jQuery easing を拡張します\n  <b>inner class</b>\n  <p>呼び出しはできません、読み込まれると同時に拡張します。</p>\n  <h2>種類</h2>\n  <ul>\n    <li>quart</li>\n    <li>easeInQuad</li>\n    <li>easeOutQuad</li>\n    <li>easeInOutQuad</li>\n    <li>easeInCubic</li>\n    <li>easeOutCubic</li>\n    <li>easeInOutCubic</li>\n    <li>easeInQuart</li>\n    <li>easeOutQuart</li>\n    <li>easeInOutQuart</li>\n    <li>easeInQuint</li>\n    <li>easeOutQuint</li>\n    <li>easeInOutQuint</li>\n    <li>easeInSine</li>\n    <li>easeOutSine</li>\n    <li>easeInOutSine</li>\n    <li>easeInExpo</li>\n    <li>easeOutExpo</li>\n    <li>easeInOutExpo</li>\n    <li>easeInCirc</li>\n    <li>easeOutCirc</li>\n    <li>easeInOutCirc</li>\n    <li>easeInElastic</li>\n    <li>easeOutElastic</li>\n    <li>easeInOutElastic</li>\n    <li>easeInBack</li>\n    <li>easeOutBack</li>\n    <li>easeInOutBack</li>\n    <li>easeInBounce</li>\n    <li>easeOutBounce</li>\n    <li>easeInOutBounce</li>\n  </ul>",
             "static": 1,
@@ -87,14 +86,14 @@
             "extension_for": [],
             "module": "Yamori",
             "namespace": "",
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 604,
             "is_constructor": 1
         }
     },
     "classitems": [
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 71,
             "description": "引数 element(HTMLElement) の data属性を object {key: value} にして返す",
             "itemtype": "method",
@@ -114,7 +113,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 92,
             "description": "modern Browser の dataset を key: value を調べます",
             "itemtype": "method",
@@ -134,7 +133,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 137,
             "itemtype": "method",
             "name": "legacy",
@@ -153,7 +152,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 169,
             "itemtype": "method",
             "name": "camel",
@@ -173,7 +172,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 184,
             "description": "camelcase 文字型を -（ハイフン）つなぎにして返します",
             "itemtype": "method",
@@ -194,7 +193,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 258,
             "itemtype": "method",
             "name": "activate",
@@ -210,7 +209,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 485,
             "description": "scroll 位置を y:0 にします",
             "static": 1,
@@ -222,7 +221,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 510,
             "description": "hash があるときは scrollTo(0,0) を実行する",
             "itemtype": "method",
@@ -234,7 +233,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 529,
             "description": "$( document ).ready を実行する",
             "itemtype": "method",
@@ -246,7 +245,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 549,
             "itemtype": "method",
             "name": "load",
@@ -262,7 +261,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 614,
             "description": "初期化処理",
             "itemtype": "method",
@@ -277,7 +276,7 @@
             "module": "Yamori"
         },
         {
-            "file": "../src/yamori.js",
+            "file": "src/yamori.js",
             "line": 632,
             "itemtype": "method",
             "name": "trans",
@@ -287,7 +286,7 @@
                     "description": ""
                 }
             ],
-            "type": "{{\n target: string,\n easing: string,\n duration: number,\n complete: function\n}}",
+            "type": "{{\n target: string,\n easing: string,\n duration: number,\n start: function\n complete: function\n}}",
             "default": "{\n easing: \"quart\",\n duration: 500,\n complete: undefined\n}",
             "class": "Yamori",
             "module": "Yamori"

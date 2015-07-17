@@ -11,7 +11,7 @@
       border: 1px solid #333;
     }
   </style>
-  <script src="../_dependencies/jquery-1.7.js"></script>
+  <script src="../_dependencies/jquery-1.11.1.min.js"></script>
   <script src="../libs/yamori.js"></script>
   <script>
     ( function ( window ) {
@@ -22,7 +22,8 @@
         document = window.document,
         $ = window.jQuery;
 
-      $.yamori();
+//      $.yamori();
+      $.yamori( { easing: "easeOutBounce", duration: 1000 } );
 
     }( window ) );
   </script>
@@ -45,6 +46,15 @@
 </div>
 <div id="element5" class="element">
   <p>#element5</p>
+</div>
+<div id="element6" class="element">
+  <p>#element6</p>
+</div>
+<div id="element7" class="element">
+  <p>#element7</p>
+</div>
+<div id="element8" class="element">
+  <p>#element8</p>
 </div>
 </body>
 </html>

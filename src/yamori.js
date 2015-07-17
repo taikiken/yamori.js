@@ -636,6 +636,7 @@
      *  target: string,
      *  easing: string,
      *  duration: number,
+     *  start: function
      *  complete: function
      * }}
      * @default
@@ -648,7 +649,8 @@
     p.trans = function ( option ) {
 
       var
-        $target = $( option.target ),
+        target = option.target,
+        $target = $( target ),
         y;
 
       if ( $target.length === 0 ) {
@@ -673,14 +675,42 @@
           duration: option.duration,
           easing: option.easing,
           queue: false,
+          start: function () {
+
+            // start method, from jQuery 1.8
+            // jQuery 1.8 below, can not call start
+            var
+              html = this.nodeName.toLowerCase() === "html",
+              start;
+
+            if ( html ) {
+
+              start = option.start;
+
+              if ( typeof start === "function" ) {
+
+                start.call( this, target, $target, y );
+
+              }
+
+            }
+
+          },
           complete: function () {
 
             var
+              html = this.nodeName.toLowerCase() === "html",
+              complete;
+
+            if ( html ) {
+
               complete = option.complete;
 
-            if ( typeof complete === "function" ) {
+              if ( typeof complete === "function" ) {
 
-              complete.call( this, option.target, y, $target );
+                complete.call( this, target, $target, y );
+
+              }
 
             }
 
@@ -720,28 +750,6 @@
   }
 
   window.Yamori = Yamori;
-
-  ///*=========================
-  // jQuery & Zepto Plugins
-  // ===========================*/
-  //if ( window.jQuery || window.Zepto ) {
-  //
-  //  $.fn.yamori = function ( params ) {
-  //
-  //    $( this ).each( function ( index, element ) {
-  //
-  //      console.log( "index, element ", index, element );
-  //      ready();
-  //      load( params );
-  //
-  //      $( this ).data( 'yamori', yamori );
-  //
-  //    } );
-  //
-  //    return this;
-  //
-  //  };
-  //}
 
 }( window ) );
 

@@ -5,7 +5,7 @@
   "options": {
     "linkNatives": "true",
     "attributesEmit": "true",
-    "outdir": "../docs",
-    "paths": ["../src"]
+    "outdir": "./docs",
+    "paths": ["./src"]
   }
 }

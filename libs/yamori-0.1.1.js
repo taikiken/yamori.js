@@ -1,87 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>../src/yamori.js - yamori.js</title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
-    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="icon" href="../assets/favicon.ico">
-    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
-</head>
-<body class="yui3-skin-sam">
-
-<div id="doc">
-    <div id="hd" class="yui3-g header">
-        <div class="yui3-u-3-4">
-                <h1><img src="../assets/css/logo.png" title="yamori.js" width="117" height="52"></h1>
-        </div>
-        <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.1.0</em>
-        </div>
-    </div>
-    <div id="bd" class="yui3-g">
-
-        <div class="yui3-u-1-4">
-            <div id="docs-sidebar" class="sidebar apidocs">
-                <div id="api-list">
-                    <h2 class="off-left">APIs</h2>
-                    <div id="api-tabview" class="tabview">
-                        <ul class="tabs">
-                            <li><a href="#api-classes">Classes</a></li>
-                            <li><a href="#api-modules">Modules</a></li>
-                        </ul>
-                
-                        <div id="api-tabview-filter">
-                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-                        </div>
-                
-                        <div id="api-tabview-panel">
-                            <ul id="api-classes" class="apis classes">
-                                <li><a href="../classes/Dataset.html">Dataset</a></li>
-                                <li><a href="../classes/Easing.html">Easing</a></li>
-                                <li><a href="../classes/Yamori.html">Yamori</a></li>
-                            </ul>
-                
-                            <ul id="api-modules" class="apis modules">
-                                <li><a href="../modules/Yamori.html">Yamori</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="yui3-u-3-4">
-                <div id="api-options">
-                    Show:
-                    <label for="api-show-inherited">
-                        <input type="checkbox" id="api-show-inherited" checked>
-                        Inherited
-                    </label>
-            
-                    <label for="api-show-protected">
-                        <input type="checkbox" id="api-show-protected">
-                        Protected
-                    </label>
-            
-                    <label for="api-show-private">
-                        <input type="checkbox" id="api-show-private">
-                        Private
-                    </label>
-                    <label for="api-show-deprecated">
-                        <input type="checkbox" id="api-show-deprecated">
-                        Deprecated
-                    </label>
-            
-                </div>
-            
-            <div class="apidocs">
-                <div id="docs-main">
-                    <div class="content">
-<h1 class="file-heading">File: ../src/yamori.js</h1>
-
-<div class="file">
-    <pre class="code prettyprint linenums">
 /*!
  * @license inazumatv.com
  * @author (at)taikiken / http://inazumatv.com
@@ -94,9 +10,9 @@
  *
  * This notice shall be included in all copies or substantial portions of the Software.
  *
- * @build @@buildTime
- * @version @@version
- * @github @@github
+ * @build 2015-07-17 16:20:15
+ * @version 0.1.1
+ * @github https://github.com/taikiken/yamori.js
  */
 /* jslint -W089 */
 /**
@@ -108,7 +24,7 @@
 
 ( function ( window ) {
 
-  &quot;use strict&quot;;
+  "use strict";
 
   var
     document = window.document,
@@ -120,7 +36,7 @@
 
     defaults= {
       auto: true,
-      easing: &quot;quart&quot;,
+      easing: "quart",
       duration: 500
     },
     dataset = {},
@@ -140,13 +56,13 @@
 
     /**
      * data 属性をパースして key: value 形式にします
-     * &lt;br&gt;&lt;b&gt;*inner class&lt;/b&gt;
+     * <br><b>*inner class</b>
      * @class Dataset
      * @static
      * @constructor
      */
     function Dataset () {
-      throw new Error( &quot;Dataset cannot be instantiated&quot; );
+      throw new Error( "Dataset cannot be instantiated" );
     }
 
     var p = Dataset.prototype;
@@ -161,7 +77,7 @@
      */
     Dataset.scan = function ( element ) {
 
-      if ( typeof element.dataset !== &quot;undefined&quot; ) {
+      if ( typeof element.dataset !== "undefined" ) {
 
         return Dataset.modern( element );
 
@@ -191,10 +107,10 @@
 
       for( key in data ) {
 
-        keyName = &quot;&quot;;
-        value = &quot;&quot;;
+        keyName = "";
+        value = "";
         // Android 2.3 under, dataset object の hasOwnProperty が String型, バカでしょー
-        if ( typeof data.hasOwnProperty === &quot;function&quot; ) {
+        if ( typeof data.hasOwnProperty === "function" ) {
 
           if ( data.hasOwnProperty( key ) ) {
 
@@ -231,15 +147,15 @@
         results = {},
         i, limit, attribute, nodeName, dataKey;
 
-      for ( i = 0, limit = data.length; i &lt; limit; i = i + 1 ) {
+      for ( i = 0, limit = data.length; i < limit; i = i + 1 ) {
 
         attribute = data[ i ];
         nodeName = attribute.nodeName.toLowerCase();
 
-        if ( nodeName.indexOf( &quot;data-&quot; ) !== -1 ) {
+        if ( nodeName.indexOf( "data-" ) !== -1 ) {
 
           // modern browser にあわせ camelcase にします
-          dataKey = Dataset.camel( nodeName.replace( &quot;data-&quot;, &quot;&quot; ) );
+          dataKey = Dataset.camel( nodeName.replace( "data-", "" ) );
           results[ dataKey ] = attribute.nodeValue.toLowerCase();
 
         }
@@ -276,7 +192,7 @@
 
       // Split camelcase string and add hyphen rather than space
       // http://stackoverflow.com/questions/8955533/javascript-jquery-split-camelcase-string-and-add-hyphen-rather-than-space
-      return str.replace(/([a-z])([A-Z])/g, &#x27;$1-$2&#x27;).toLowerCase();
+      return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
     };
 
@@ -291,49 +207,49 @@
 
     /**
      *  jQuery easing を拡張します
-     *    &lt;b&gt;inner class&lt;/b&gt;
-     *    &lt;p&gt;呼び出しはできません、読み込まれると同時に拡張します。&lt;/p&gt;
-     *    &lt;h2&gt;種類&lt;/h2&gt;
-     *    &lt;ul&gt;
-     *      &lt;li&gt;quart&lt;/li&gt;
-     *      &lt;li&gt;easeInQuad&lt;/li&gt;
-     *      &lt;li&gt;easeOutQuad&lt;/li&gt;
-     *      &lt;li&gt;easeInOutQuad&lt;/li&gt;
-     *      &lt;li&gt;easeInCubic&lt;/li&gt;
-     *      &lt;li&gt;easeOutCubic&lt;/li&gt;
-     *      &lt;li&gt;easeInOutCubic&lt;/li&gt;
-     *      &lt;li&gt;easeInQuart&lt;/li&gt;
-     *      &lt;li&gt;easeOutQuart&lt;/li&gt;
-     *      &lt;li&gt;easeInOutQuart&lt;/li&gt;
-     *      &lt;li&gt;easeInQuint&lt;/li&gt;
-     *      &lt;li&gt;easeOutQuint&lt;/li&gt;
-     *      &lt;li&gt;easeInOutQuint&lt;/li&gt;
-     *      &lt;li&gt;easeInSine&lt;/li&gt;
-     *      &lt;li&gt;easeOutSine&lt;/li&gt;
-     *      &lt;li&gt;easeInOutSine&lt;/li&gt;
-     *      &lt;li&gt;easeInExpo&lt;/li&gt;
-     *      &lt;li&gt;easeOutExpo&lt;/li&gt;
-     *      &lt;li&gt;easeInOutExpo&lt;/li&gt;
-     *      &lt;li&gt;easeInCirc&lt;/li&gt;
-     *      &lt;li&gt;easeOutCirc&lt;/li&gt;
-     *      &lt;li&gt;easeInOutCirc&lt;/li&gt;
-     *      &lt;li&gt;easeInElastic&lt;/li&gt;
-     *      &lt;li&gt;easeOutElastic&lt;/li&gt;
-     *      &lt;li&gt;easeInOutElastic&lt;/li&gt;
-     *      &lt;li&gt;easeInBack&lt;/li&gt;
-     *      &lt;li&gt;easeOutBack&lt;/li&gt;
-     *      &lt;li&gt;easeInOutBack&lt;/li&gt;
-     *      &lt;li&gt;easeInBounce&lt;/li&gt;
-     *      &lt;li&gt;easeOutBounce&lt;/li&gt;
-     *      &lt;li&gt;easeInOutBounce&lt;/li&gt;
-     *    &lt;/ul&gt;
+     *    <b>inner class</b>
+     *    <p>呼び出しはできません、読み込まれると同時に拡張します。</p>
+     *    <h2>種類</h2>
+     *    <ul>
+     *      <li>quart</li>
+     *      <li>easeInQuad</li>
+     *      <li>easeOutQuad</li>
+     *      <li>easeInOutQuad</li>
+     *      <li>easeInCubic</li>
+     *      <li>easeOutCubic</li>
+     *      <li>easeInOutCubic</li>
+     *      <li>easeInQuart</li>
+     *      <li>easeOutQuart</li>
+     *      <li>easeInOutQuart</li>
+     *      <li>easeInQuint</li>
+     *      <li>easeOutQuint</li>
+     *      <li>easeInOutQuint</li>
+     *      <li>easeInSine</li>
+     *      <li>easeOutSine</li>
+     *      <li>easeInOutSine</li>
+     *      <li>easeInExpo</li>
+     *      <li>easeOutExpo</li>
+     *      <li>easeInOutExpo</li>
+     *      <li>easeInCirc</li>
+     *      <li>easeOutCirc</li>
+     *      <li>easeInOutCirc</li>
+     *      <li>easeInElastic</li>
+     *      <li>easeOutElastic</li>
+     *      <li>easeInOutElastic</li>
+     *      <li>easeInBack</li>
+     *      <li>easeOutBack</li>
+     *      <li>easeInOutBack</li>
+     *      <li>easeInBounce</li>
+     *      <li>easeOutBounce</li>
+     *      <li>easeInOutBounce</li>
+     *    </ul>
      *
      * @class Easing
      * @static
      * @constructor
      */
     function Easing () {
-      throw new Error( &quot;Easing cannot be instantiated&quot; );
+      throw new Error( "Easing cannot be instantiated" );
     }
 
     var p = Easing.prototype;
@@ -367,7 +283,7 @@
         return -c *(t/=d)*(t-2) + b;
       };
       je.easeInOutQuad = function (x, t, b, c, d) {
-        if ((t /= d/2) &lt; 1) {return c/2*t*t + b;}
+        if ((t /= d/2) < 1) {return c/2*t*t + b;}
         return -c/2 * ((--t)*(t-2) - 1) + b;
       };
       je.easeInCubic = function (x, t, b, c, d) {
@@ -377,7 +293,7 @@
         return c*((t=t/d-1)*t*t + 1) + b;
       };
       je.easeInOutCubic = function (x, t, b, c, d) {
-        if ((t /= d/2) &lt; 1) {return c/2*t*t*t + b;}
+        if ((t /= d/2) < 1) {return c/2*t*t*t + b;}
         return c/2*((t-=2)*t*t + 2) + b;
       };
       je.easeInQuart = function (x, t, b, c, d) {
@@ -387,7 +303,7 @@
         return -c * ((t=t/d-1)*t*t*t - 1) + b;
       };
       je.easeInOutQuart = function (x, t, b, c, d) {
-        if ((t /= d/2) &lt; 1) {return c/2*t*t*t*t + b;}
+        if ((t /= d/2) < 1) {return c/2*t*t*t*t + b;}
         return -c/2 * ((t-=2)*t*t*t - 2) + b;
       };
       je.easeInQuint = function (x, t, b, c, d) {
@@ -397,7 +313,7 @@
         return c*((t=t/d-1)*t*t*t*t + 1) + b;
       };
       je.easeInOutQuint = function (x, t, b, c, d) {
-        if ((t /= d/2) &lt; 1) {return c/2*t*t*t*t*t + b;}
+        if ((t /= d/2) < 1) {return c/2*t*t*t*t*t + b;}
         return c/2*((t-=2)*t*t*t*t + 2) + b;
       };
       je.easeInSine = function (x, t, b, c, d) {
@@ -418,7 +334,7 @@
       je.easeInOutExpo = function (x, t, b, c, d) {
         if (t===0) {return b;}
         if (t===d) {return b+c;}
-        if ((t /= d/2) &lt; 1) {return c/2 * _pow(2, 10 * (t - 1)) + b;}
+        if ((t /= d/2) < 1) {return c/2 * _pow(2, 10 * (t - 1)) + b;}
         return c/2 * (-_pow(2, -10 * --t) + 2) + b;
       };
       je.easeInCirc = function (x, t, b, c, d) {
@@ -428,7 +344,7 @@
         return c * _sqrt(1 - (t=t/d-1)*t) + b;
       };
       je.easeInOutCirc = function (x, t, b, c, d) {
-        if ((t /= d/2) &lt; 1) {return -c/2 * (_sqrt(1 - t*t) - 1) + b;}
+        if ((t /= d/2) < 1) {return -c/2 * (_sqrt(1 - t*t) - 1) + b;}
         return c/2 * (_sqrt(1 - (t-=2)*t) + 1) + b;
       };
       je.easeInElastic = function (x, t, b, c, d) {
@@ -436,7 +352,7 @@
         if (t===0) {return b;}
         if ((t/=d)===1) {return b+c;}
         if (!p) {p=d*0.3;}
-        if (a &lt; _abs(c)) { a=c;s=p/4; }
+        if (a < _abs(c)) { a=c;s=p/4; }
         else {
           s = p/(_PI_W) * _asin (c/a);
           return -(a*_pow(2,10*(t-=1)) * _sin( (t*d-s)*(_PI_W)/p )) + b;
@@ -447,7 +363,7 @@
         if (t===0) {return b; }
         if ((t/=d)===1) {return b+c;}
         if (!p) {p=d*0.3;}
-        if (a &lt; _abs(c)) { a=c; s=p/4; }
+        if (a < _abs(c)) { a=c; s=p/4; }
         else { s = p/(_PI_W) * _asin (c/a);
           return a*_pow(2,-10*t) * _sin( (t*d-s)*(_PI_W)/p ) + c + b;}
       };
@@ -456,10 +372,10 @@
         if (t===0) {return b;}
         if ((t /= d/2)===2) {return b+c;}
         if (!p) {p=d*(0.3*1.5);}
-        if (a &lt; _abs(c)) { a=c;s=p/4; }
+        if (a < _abs(c)) { a=c;s=p/4; }
         else {
           s = p/(_PI_W) * _asin (c/a);
-          if (t &lt; 1) {return -0.5*(a*_pow(2,10*(t-=1)) * _sin( (t*d-s)*(_PI_W)/p )) + b;}
+          if (t < 1) {return -0.5*(a*_pow(2,10*(t-=1)) * _sin( (t*d-s)*(_PI_W)/p )) + b;}
           return a*_pow(2,-10*(t-=1)) * _sin( (t*d-s)*(_PI_W)/p )*0.5 + c + b;
         }
       };
@@ -473,25 +389,25 @@
       };
       je.easeInOutBack = function (x, t, b, c, d, s) {
         if (s === undefined) {s = 1.70158; }
-        if ((t /= d/2) &lt; 1) {return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;}
+        if ((t /= d/2) < 1) {return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;}
         return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
       };
       je.easeInBounce = function (x, t, b, c, d) {
         return c - je.easeOutBounce (x, d-t, 0, c, d) + b;
       };
       je.easeOutBounce = function (x, t, b, c, d) {
-        if ((t/=d) &lt; (1/2.75)) {
+        if ((t/=d) < (1/2.75)) {
           return c*(7.5625*t*t) + b;
-        } else if (t &lt; (2/2.75)) {
+        } else if (t < (2/2.75)) {
           return c*(7.5625*(t-=(1.5/2.75))*t + 0.75) + b;
-        } else if (t &lt; (2.5/2.75)) {
+        } else if (t < (2.5/2.75)) {
           return c*(7.5625*(t-=(2.25/2.75))*t + 0.9375) + b;
         } else {
           return c*(7.5625*(t-=(2.625/2.75))*t + 0.984375) + b;
         }
       };
       je.easeInOutBounce = function (x, t, b, c, d) {
-        if (t &lt; d/2) {return je.easeInBounce (x, t*2, 0, c, d) * 0.5 + b;}
+        if (t < d/2) {return je.easeInBounce (x, t*2, 0, c, d) * 0.5 + b;}
         return je.easeOutBounce (x, t*2-d, 0, c, d) * 0.5 + c * 0.5 + b;
       };
 
@@ -509,9 +425,9 @@
     if ( !!results ) {
 
       // auto
-      if ( results.hasOwnProperty( &quot;auto&quot; ) ) {
+      if ( results.hasOwnProperty( "auto" ) ) {
 
-        setting.auto = results.auto === &quot;true&quot;;
+        setting.auto = results.auto === "true";
 
       } else {
 
@@ -520,7 +436,7 @@
       }// auto
 
       // easing
-      if ( results.hasOwnProperty( &quot;easing&quot; ) ) {
+      if ( results.hasOwnProperty( "easing" ) ) {
 
         setting.easing = results.easing;
 
@@ -531,7 +447,7 @@
       }// easing
 
       // duration
-      if ( results.hasOwnProperty( &quot;duration&quot; ) ) {
+      if ( results.hasOwnProperty( "duration" ) ) {
 
         setting.duration = parseInt( results.duration, 10 );
 
@@ -548,7 +464,7 @@
   }
 
   // dataset
-  yamori = document.getElementById( &quot;yamori&quot; );
+  yamori = document.getElementById( "yamori" );
   if ( !!yamori ) {
 
     results = Dataset.scan( yamori );
@@ -639,7 +555,7 @@
   function load ( params ) {
 
     // bind window.onload
-    $( window ).on( &quot;load&quot;, function () {
+    $( window ).on( "load", function () {
 
       var
         option,
@@ -703,9 +619,9 @@
      */
     p._init = function () {
 
-      if ( typeof $body === &quot;undefined&quot; ) {
+      if ( typeof $body === "undefined" ) {
         // $body undefined
-        $body = $( &quot;html, body&quot; );
+        $body = $( "html, body" );
 
       }
 
@@ -720,11 +636,12 @@
      *  target: string,
      *  easing: string,
      *  duration: number,
+     *  start: function
      *  complete: function
      * }}
      * @default
      * {
-     *  easing: &quot;quart&quot;,
+     *  easing: "quart",
      *  duration: 500,
      *  complete: undefined
      * }
@@ -732,7 +649,8 @@
     p.trans = function ( option ) {
 
       var
-        $target = $( option.target ),
+        target = option.target,
+        $target = $( target ),
         y;
 
       if ( $target.length === 0 ) {
@@ -757,14 +675,42 @@
           duration: option.duration,
           easing: option.easing,
           queue: false,
+          start: function () {
+
+            // start method, from jQuery 1.8
+            // jQuery 1.8 below, can not call start
+            var
+              html = this.nodeName.toLowerCase() === "html",
+              start;
+
+            if ( html ) {
+
+              start = option.start;
+
+              if ( typeof start === "function" ) {
+
+                start.call( this, target, $target, y );
+
+              }
+
+            }
+
+          },
           complete: function () {
 
             var
+              html = this.nodeName.toLowerCase() === "html",
+              complete;
+
+            if ( html ) {
+
               complete = option.complete;
 
-            if ( typeof complete === &quot;function&quot; ) {
+              if ( typeof complete === "function" ) {
 
-              complete.call( this, option.target, y, $target );
+                complete.call( this, target, $target, y );
+
+              }
 
             }
 
@@ -805,37 +751,15 @@
 
   window.Yamori = Yamori;
 
-  ///*=========================
-  // jQuery &amp; Zepto Plugins
-  // ===========================*/
-  //if ( window.jQuery || window.Zepto ) {
-  //
-  //  $.fn.yamori = function ( params ) {
-  //
-  //    $( this ).each( function ( index, element ) {
-  //
-  //      console.log( &quot;index, element &quot;, index, element );
-  //      ready();
-  //      load( params );
-  //
-  //      $( this ).data( &#x27;yamori&#x27;, yamori );
-  //
-  //    } );
-  //
-  //    return this;
-  //
-  //  };
-  //}
-
 }( window ) );
 
 /*=========================
- jQuery &amp; Zepto Plugins
+ jQuery & Zepto Plugins
  ===========================*/
 if (window.jQuery || window.Zepto) {
   ( function ( $ ) {
 
-    &#x27;use strict&#x27;;
+    'use strict';
 
     var
       Yamori = window.Yamori;
@@ -848,7 +772,7 @@ if (window.jQuery || window.Zepto) {
           $this = $( this ),
           yamori = new Yamori();
 
-        $this.on( &quot;click&quot;, function ( event ) {
+        $this.on( "click", function ( event ) {
 
           event.preventDefault();
 
@@ -856,9 +780,9 @@ if (window.jQuery || window.Zepto) {
             href = element.href,
             hash;
 
-          if ( !!href || href.indexOf( &quot;#&quot;) !== -1 ) {
+          if ( !!href || href.indexOf( "#") !== -1 ) {
 
-            hash = &quot;#&quot; + href.split( &quot;#&quot; ).pop();
+            hash = "#" + href.split( "#" ).pop();
             params.target = hash;
             yamori.trans( params );
 
@@ -866,7 +790,7 @@ if (window.jQuery || window.Zepto) {
 
         } );
 
-        $( this ).data( &#x27;yamori&#x27;, yamori );
+        $( this ).data( 'yamori', yamori );
 
       } );
 
@@ -881,39 +805,20 @@ if (window.jQuery || window.Zepto) {
 }
 
 // component
-if ( typeof( module ) !== &#x27;undefined&#x27; ) {
+if ( typeof( module ) !== 'undefined' ) {
 
   window.module.exports = window.Yamori;
 
 }
 
 // requirejs support
-if ( typeof define === &#x27;function&#x27; &amp;&amp; window.define.amd ) {
+if ( typeof define === 'function' && window.define.amd ) {
 
   window.define( [], function () {
 
-    &#x27;use strict&#x27;;
+    'use strict';
     return window.Yamori;
 
   } );
 
 }
-
-    </pre>
-</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script>prettyPrint();</script>
-<script src="../assets/js/yui-prettify.js"></script>
-<script src="../assets/../api.js"></script>
-<script src="../assets/js/api-filter.js"></script>
-<script src="../assets/js/api-list.js"></script>
-<script src="../assets/js/api-search.js"></script>
-<script src="../assets/js/apidocs.js"></script>
-</body>
-</html>
