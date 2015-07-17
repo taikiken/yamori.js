@@ -1,7 +1,7 @@
 /**
  * @license inazumatv.com
  * @author (at)taikiken / http://inazumatv.com
- * @date 2015/03/16 - 14:54
+ * @date 15/07/17 - 17:49
  *
  * Copyright (c) 2011-2015 inazumatv.com, inc.
  *
@@ -9,12 +9,16 @@
  * http://www.opensource.org/licenses/mit-license.html
  *
  * This notice shall be included in all copies or substantial portions of the Software.
+ *
+ * for yamori.js
  */
 /*jslint node: true */
+/*jslint -W079 */
+"use strict";
 
 // ----------------------------------------------------------------
-"use strict";
-var settings = require( './setting.js' );
+// setting
+var settings = require( '../setting.js' );
 
 // ----------------------------------------------------------------
 // Directory
@@ -32,10 +36,18 @@ var gulp = settings.gulp;
 var $ = settings.plugin;
 
 // ----------------------------------------------------------------
-// import task directory
-$.requireDir('./task', { recurse: true });
+// scripts
+var patterns = settings.patterns;
+
 
 // ----------------------------------------------------------------
 // task
 // ----------------------------------------------------------------
-gulp.task( 'build', [ 'script-build', 'readme-build' ] );
+gulp.task( 'readme-build', function () {
+
+  return gulp.src( './README.md' )
+    .pipe( $.replace( { patterns: patterns } ) )
+    .pipe( gulp.dest( '../' ) )
+    .pipe( $.size( { title: '*** readme-build ***' } ) );
+
+} );

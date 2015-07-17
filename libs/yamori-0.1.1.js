@@ -1,4 +1,15 @@
 /*!
+ * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
+ * TERMS OF USE - jQuery Easing
+ *
+ * Open source under the BSD License.
+ *
+ * Copyright © 2008 George McGinley Smith
+ * All rights reserved.
+ *
+ * modified by taikiken
+ */
+/*!
  * @license inazumatv.com
  * @author (at)taikiken / http://inazumatv.com
  * @date 15/07/16 - 16:03
@@ -10,7 +21,7 @@
  *
  * This notice shall be included in all copies or substantial portions of the Software.
  *
- * @build 2015-07-17 16:20:15
+ * @build 2015-07-17 17:58:20
  * @version 0.1.1
  * @github https://github.com/taikiken/yamori.js
  */
@@ -207,6 +218,7 @@
 
     /**
      *  jQuery easing を拡張します
+     *    <p>jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/</P>
      *    <b>inner class</b>
      *    <p>呼び出しはできません、読み込まれると同時に拡張します。</p>
      *    <h2>種類</h2>

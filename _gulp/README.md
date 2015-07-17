@@ -1,8 +1,8 @@
 # yamori.js
 JavaScript, window.scrollTo by location.hash
 
-version: 0.1.1  
-build: 2015-07-17 17:58:20
+version: @@version  
+build: @@buildTime
 
 ## hash付遷移時に window.onload 後にスムーズスクロール
 
