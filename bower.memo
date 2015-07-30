@@ -1,4 +1,7 @@
+
 # commit
+bower register example git@github.com:taikiken/yamori.js.git
+
 git commit -am "changes, something update."
 
 
