@@ -26,6 +26,7 @@
  * @github @@github
  */
 /* jslint -W089 */
+/*jslint -W016*/
 /**
  * yamori.js
  * @requires jQuery
@@ -88,7 +89,7 @@
      */
     Dataset.scan = function ( element ) {
 
-      if ( typeof element.dataset !== "undefined" ) {
+      if ( typeof element.dataset !== 'undefined' ) {
 
         return Dataset.modern( element );
 
@@ -121,7 +122,7 @@
         keyName = "";
         value = "";
         // Android 2.3 under, dataset object の hasOwnProperty が String型, バカでしょー
-        if ( typeof data.hasOwnProperty === "function" ) {
+        if ( typeof data.hasOwnProperty === 'function' ) {
 
           if ( data.hasOwnProperty( key ) ) {
 
@@ -158,15 +159,15 @@
         results = {},
         i, limit, attribute, nodeName, dataKey;
 
-      for ( i = 0, limit = data.length; i < limit; i = i + 1 ) {
+      for ( i = 0, limit = data.length; i < limit; i = (i + 1)|0 ) {
 
         attribute = data[ i ];
         nodeName = attribute.nodeName.toLowerCase();
 
-        if ( nodeName.indexOf( "data-" ) !== -1 ) {
+        if ( nodeName.indexOf( 'data-' ) !== -1 ) {
 
           // modern browser にあわせ camelcase にします
-          dataKey = Dataset.camel( nodeName.replace( "data-", "" ) );
+          dataKey = Dataset.camel( nodeName.replace( 'data-', '' ) );
           results[ dataKey ] = attribute.nodeValue.toLowerCase();
 
         }
@@ -437,9 +438,9 @@
     if ( !!results ) {
 
       // auto
-      if ( results.hasOwnProperty( "auto" ) ) {
+      if ( results.hasOwnProperty( 'auto' ) ) {
 
-        setting.auto = results.auto === "true";
+        setting.auto = results.auto === 'true';
 
       } else {
 
@@ -448,7 +449,7 @@
       }// auto
 
       // easing
-      if ( results.hasOwnProperty( "easing" ) ) {
+      if ( results.hasOwnProperty( 'easing' ) ) {
 
         setting.easing = results.easing;
 
@@ -459,7 +460,7 @@
       }// easing
 
       // duration
-      if ( results.hasOwnProperty( "duration" ) ) {
+      if ( results.hasOwnProperty( 'duration' ) ) {
 
         setting.duration = parseInt( results.duration, 10 );
 
@@ -476,7 +477,8 @@
   }
 
   // dataset
-  yamori = document.getElementById( "yamori" );
+  yamori = document.getElementById( 'yamori' );
+
   if ( !!yamori ) {
 
     results = Dataset.scan( yamori );
@@ -531,7 +533,7 @@
     if ( style) {
 
       bodyStyle = document.body.style.cssText;
-      document.body.style.cssText += "position: fixed; left: 0; top: 0; width: 100%;";
+      document.body.style.cssText += 'position: fixed; left: 0; top: 0; width: 100%;';
 
     }
 
@@ -604,7 +606,7 @@
   function load ( params ) {
 
     // bind window.onload
-    $( window ).on( "load", function () {
+    $( window ).on( 'load', function () {
 
       var
         option,
@@ -669,9 +671,9 @@
      */
     p._init = function () {
 
-      if ( typeof $body === "undefined" ) {
+      if ( typeof $body === 'undefined' ) {
         // $body undefined
-        $body = $( "html, body" );
+        $body = $( 'html, body' );
 
       }
 
@@ -736,7 +738,7 @@
             // start method, from jQuery 1.8
             // jQuery 1.8 below, can not call start
             var
-              html = this.nodeName.toLowerCase() === "html",
+              html = this.nodeName.toLowerCase() === 'html',
               start;
 
             //console.log( "** start ** document.documentElement.scrollTop ", document.documentElement.scrollTop );
@@ -745,7 +747,7 @@
 
               start = option.start;
 
-              if ( typeof start === "function" ) {
+              if ( typeof start === 'function' ) {
 
                 start.call( this, target, $target, y );
 
@@ -763,14 +765,14 @@
             //}
 
             var
-              html = this.nodeName.toLowerCase() === "html",
+              html = this.nodeName.toLowerCase() === 'html',
               complete;
 
             if ( html ) {
 
               complete = option.complete;
 
-              if ( typeof complete === "function" ) {
+              if ( typeof complete === 'function' ) {
 
                 complete.call( this, target, $target, y );
 
@@ -784,7 +786,12 @@
 
     };
 
-
+    /**
+     * @method activate
+     * @static
+     * @param {*} params
+     * @return {Yamori}
+     */
     Yamori.activate = function ( params ) {
 
       //initialize();
@@ -795,6 +802,11 @@
 
     };
 
+    /**
+     * @method stick
+     * @static
+     * @return {Yamori}
+     */
     Yamori.stick = function () {
 
       stick();
@@ -837,7 +849,7 @@ if (window.jQuery || window.Zepto) {
           $this = $( this ),
           yamori = new Yamori();
 
-        $this.on( "click", function ( event ) {
+        $this.on( 'click', function ( event ) {
 
           event.preventDefault();
 
@@ -845,9 +857,9 @@ if (window.jQuery || window.Zepto) {
             href = element.href,
             hash;
 
-          if ( !!href || href.indexOf( "#") !== -1 ) {
+          if ( !!href || href.indexOf( '#' ) !== -1 ) {
 
-            hash = "#" + href.split( "#" ).pop();
+            hash = '#' + href.split( '#' ).pop();
             params.target = hash;
             yamori.trans( params );
 
@@ -860,10 +872,11 @@ if (window.jQuery || window.Zepto) {
       } );
 
     };
+
     $.yamori = function ( params ) {
 
-      Yamori.stick();
-      Yamori.activate( params );
+      Yamori.stick()
+        .activate( params );
 
       };
   })( window.jQuery || window.Zepto );
